@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://begq8wops3bbh"]
+
+[ext_resource type="Texture2D" uid="uid://cpslnpsafb7vk" path="res://icon.svg" id="1_sw4bp"]
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_2iji5"]
+
+[node name="level" type="Node2D"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+mesh = SubResource("ImmediateMesh_2iji5")
+texture = ExtResource("1_sw4bp")

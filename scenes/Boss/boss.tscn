@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3xlwy5w04y0q"]
+
+[ext_resource type="Script" uid="uid://bwmk5bq4xyymy" path="res://scenes/Boss/boss.gd" id="1_vebi6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1q0dx"]
+radius = 22.0
+height = 94.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_1q0dx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vebi6"]
+radius = 178.138
+
+[node name="boss" type="CharacterBody2D"]
+script = ExtResource("1_vebi6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_1q0dx")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(0, 7.62939e-06)
+scale = Vector2(30, 39)
+mesh = SubResource("CapsuleMesh_1q0dx")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="navigation_timer" type="Timer" parent="."]
+autostart = true
+
+[node name="chase_detect" type="Area2D" parent="."]
+
+[node name="chase_detect" type="CollisionShape2D" parent="chase_detect"]
+position = Vector2(2, -1)
+shape = SubResource("CircleShape2D_vebi6")
+
+[connection signal="timeout" from="navigation_timer" to="." method="_on_navigation_timer_timeout"]
+[connection signal="body_entered" from="chase_detect" to="." method="_on_chase_detect_body_entered"]
