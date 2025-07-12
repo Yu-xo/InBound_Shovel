@@ -20,9 +20,10 @@ shape = SubResource("RectangleShape2D_g27sq")
 
 [node name="jump_buffer" type="Timer" parent="."]
 one_shot = true
-autostart = true
 
 [node name="falling" type="Timer" parent="."]
 autostart = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
 
 [connection signal="timeout" from="falling" to="." method="_on_falling_timeout"]
