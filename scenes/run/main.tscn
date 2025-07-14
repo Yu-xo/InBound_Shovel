@@ -20,6 +20,8 @@ scale = Vector2(3, 3)
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_5yase")]
 position = Vector2(122, 457)
 
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]

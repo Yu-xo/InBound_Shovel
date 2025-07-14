@@ -10,7 +10,6 @@ const MIN_JUMP_VELOCITY = -200.0  # for variable jump
 var state: String = "idle"
 
 func _physics_process(delta: float) -> void:
-
 	apply_gravity(delta)
 	handle_state(delta)
 	move_and_slide()
@@ -24,7 +23,8 @@ func handle_state(delta: float) -> void:
 	if direction<0.0:
 		animated_sprite_2d.flip_h = true
 	elif direction>0.0:
-			animated_sprite_2d.flip_h = false
+		animated_sprite_2d.flip_h = false
+	
 	# Transition rules
 	if is_on_floor():
 		if Input.is_action_just_pressed("jump"):
