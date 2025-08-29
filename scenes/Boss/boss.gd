@@ -38,7 +38,7 @@ func _physics_process(delta: float) -> void:
 		check_state_transitions()
 		state_timer = 0.0
 	states_handler(delta)
-	print(current_state)
+	#print(current_state)
 
 
 func apply_gravity(delta: float) -> void:
@@ -54,7 +54,7 @@ func states_handler(delta):
 	match current_state:
 		States.idle:
 			mesh_instance_2d.modulate = Color("white")
-			print("idle state")
+			#print("idle state")
 		States.chase:
 			chase(delta)
 		States.tail_attack:

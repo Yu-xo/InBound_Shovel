@@ -21,9 +21,13 @@ func apply_gravity(delta: float) -> void:
 func handle_state(delta: float) -> void:
 	var direction := Input.get_axis("left", "right")
 	if direction<0.0:
-		animated_sprite_2d.flip_h = true
+		#animated_sprite_2d.flip_h = true
+		$polygons.scale = Vector2(-1,1)
+		$Skeleton2D.scale = Vector2(-13,13)
 	elif direction>0.0:
-		animated_sprite_2d.flip_h = false
+		#animated_sprite_2d.flip_h = false
+		$polygons.scale = Vector2(1,1)
+		$Skeleton2D.scale = Vector2(13,13)
 	
 	# Transition rules
 	if is_on_floor():
@@ -42,11 +46,14 @@ func handle_state(delta: float) -> void:
 	# Execute state behaviors
 	match state:
 		"idle":
-			animated_sprite_2d.play("idle")
+			#animated_sprite_2d.play("idle")
+			$AnimationPlayer.play("idle")
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 		"run":
 			animated_sprite_2d.play("run")
+			$AnimationPlayer.play("walk")
 			velocity.x = direction * SPEED
+			
 		"jump":
 			if Input.is_action_just_pressed("jump") and is_on_floor():
 				velocity.y = JUMP_VELOCITY
